@@ -17,7 +17,10 @@ Vagrant.configure("2") do |config|
     
     app.vm.network "private_network", ip: "192.168.200.10"
 
+    app.vm.provision "shell", path: "scripts/pre.sh"
+
   end
+
 
   config.vm.define "prom" do |prom|
 
