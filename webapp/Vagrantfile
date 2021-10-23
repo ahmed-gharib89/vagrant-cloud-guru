@@ -12,6 +12,10 @@ Vagrant.configure("2") do |config|
     app.vm.network "forwarded_port", guest: 8080, host: 8081,
       auto_correct: true, id: "wandrer-app"
     app.vm.network "private_network", ip: "192.168.200.10"
+    app.vm.provision "docker" do |docker|
+      docker.build_image "/var/www/app", args: "-t app"
+      docker.run "app", args: "-p 8080:8080"
+    end
   end
 
   config.vm.define "prom" do |prom|
