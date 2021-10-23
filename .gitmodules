@@ -1,0 +1,3 @@
+[submodule "webapp/app"]
+	path = webapp/app
+	url = https://github.com/linuxacademy/content-vagrant-demo-app.git
