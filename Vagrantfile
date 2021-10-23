@@ -17,6 +17,12 @@ Vagrant.configure("2") do |config|
     
     app.vm.network "private_network", ip: "192.168.200.10"
 
+    app.vm.provision "ansible_local" do |ansible|
+      ansible.playbook = "playbooks/node.yml"
+      ansible.become = true
+      ansible.become_user = "root"
+    end 
+
   end
 
   config.vm.define "prom" do |prom|
