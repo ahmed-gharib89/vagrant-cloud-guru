@@ -17,6 +17,11 @@ Vagrant.configure("2") do |config|
     
     app.vm.network "private_network", ip: "192.168.200.10"
 
+    app.vm.provision "chef_solo" do |chef|
+      chef.add_recipe "nodejs"
+      chef.arguments = "--chef-license accept"
+    end
+
   end
 
   config.vm.define "prom" do |prom|
